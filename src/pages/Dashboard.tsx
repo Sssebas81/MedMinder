@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/layout/Navbar";
+import Navbar from "../components/layout/sidebar";
 import type { Medication } from "../types/Medication";
 import MedicationForm from "../components/medication/medicationForm";
 import MedicationCard from "../components/medication/medicationCard";
@@ -26,7 +26,6 @@ export default function Dashboard() {
 
   return (
     <div className="p-4">
-      <Navbar />
 
       <h1 className="text-2xl font-bold mb-4">Medicamentos</h1>
 
