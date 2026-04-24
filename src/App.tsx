@@ -12,20 +12,27 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {isAuth && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<ForgotPassword />} />
-
-        <Route
-          path="/dashboard"
-          element={isAuth ? <Dashboard /> : <Navigate to="/" />}
-        />
-
-        <Route path="/guides" element={<Guides />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
+      {isAuth ? (
+        <div className="flex min-h-screen">
+          <Navbar />
+          <div className="flex-1">
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/guides" element={<Guides />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<Navigate to="/dashboard" />} />
+            </Routes>
+          </div>
+        </div>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<ForgotPassword />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }
